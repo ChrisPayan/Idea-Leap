@@ -6,12 +6,13 @@ import Navbar from "./components/Navbar";
 import PrivatePage from "./components/PrivatePage";
 import SignupPage from "./components/SignupPage";
 import PrivateRoute from "./components/PrivateRoute";
+import Navbar1 from "./components/Navbar/NavBar1";
 
 function App() {
   return (
     <AuthProvider>
       <Router>
-        <Navbar />
+        <Navbar1 />
         <Switch>
           <Route exact path="/">
             <HomePage />
