@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { v4 as uuidv4 } from "uuid";
+import randomWords from "random-words";
 
-const itemsFromBackend = [
-  { id: uuidv4(), content: "Random" },
-  { id: uuidv4(), content: "Words" },
-  { id: uuidv4(), content: "Taco" },
-  { id: uuidv4(), content: "Water" },
-  { id: uuidv4(), content: "Yeet" },
-];
+const itemsFromBackend = randomWords(5);
+// [
+//   { id: uuidv4(), content: "Random" },
+//   { id: uuidv4(), content: "Words" },
+//   { id: uuidv4(), content: "Taco" },
+//   { id: uuidv4(), content: "Water" },
+//   { id: uuidv4(), content: "Yeet" },
+// ];
 
 const columnsFromBackend = {
   [uuidv4()]: {
@@ -21,10 +23,6 @@ const columnsFromBackend = {
   },
   [uuidv4()]: {
     name: "USER COLUMN 2",
-    items: [],
-  },
-  [uuidv4()]: {
-    name: "USER COLUMN 3",
     items: [],
   },
 };
@@ -70,6 +68,9 @@ function ReactBeautifulDND() {
   const [columns, setColumns] = useState(columnsFromBackend);
   return (
     <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
+    <div>
+      <p>Hey</p>
+    </div>
       <DragDropContext
         onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
       >
