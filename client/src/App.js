@@ -7,6 +7,8 @@ import PrivatePage from "./components/PrivatePage";
 import SignupPage from "./components/SignupPage";
 import PrivateRoute from "./components/PrivateRoute";
 import Navbar1 from "./components/Navbar/NavBar1";
+import { Footer } from "./components/Footer/Footer";
+import IdeaPage from "./components/IdeaPage";
 
 function App() {
   return (
@@ -20,6 +22,9 @@ function App() {
           <Route path="/login">
             <LoginPage />
           </Route>
+          <Route path="/ideas">
+            <IdeaPage />
+          </Route>
           <PrivateRoute path="/private">
             <PrivatePage />
           </PrivateRoute>
@@ -27,6 +32,7 @@ function App() {
             <SignupPage />
           </Route>
         </Switch>
+        <Footer />
       </Router>
     </AuthProvider>
   );
