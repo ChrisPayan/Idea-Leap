@@ -13,11 +13,6 @@ const UserSeeds = [
 		username: "TestBot",
 		email: "testbot@email.com",
 		password: "password",
-		project: {
-			ColumnOne: ["Hello", "World"],
-			ColumnTwo: ["Hello", "World"],
-			ColumnThree: ["Hello", "World"],
-		},
 	},
 ];
 
