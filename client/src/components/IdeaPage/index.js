@@ -1,13 +1,14 @@
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../util/auth";
 import { Header } from "../Header/Header";
-function HomePage() {
+import ReactBeautifulDND from "../ReactBeautifulDND";
+function IdeaPage() {
   const history = useHistory();
   const auth = useAuth();
 
   return (
     <>
-      <Header />
+      <ReactBeautifulDND />
       {/* hide actions if user is logged in */}
       {!auth.isLoggedIn() && (
         <>
@@ -19,4 +20,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default IdeaPage;
