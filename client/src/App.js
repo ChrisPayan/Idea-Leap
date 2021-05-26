@@ -9,6 +9,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Navbar1 from "./components/Navbar/NavBar1";
 import { Footer } from "./components/Footer/Footer";
 import IdeaPage from "./components/IdeaPage";
+import LoginPageTA from "./components/LoginPageTA";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
             <HomePage />
           </Route>
           <Route path="/login">
-            <LoginPage />
+            <LoginPageTA />
           </Route>
           <Route path="/ideas">
             <IdeaPage />

@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../util/auth";
-import { Header } from "../Header/Header";
+import { Directions } from "../Directions/Directions";
 import ReactBeautifulDND from "../ReactBeautifulDND";
 function IdeaPage() {
   const history = useHistory();
@@ -8,7 +8,9 @@ function IdeaPage() {
 
   return (
     <>
+      <Directions />
       <ReactBeautifulDND />
+
       {/* hide actions if user is logged in */}
       {!auth.isLoggedIn() && (
         <>
