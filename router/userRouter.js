@@ -8,66 +8,102 @@ const userRouter = require("express").Router();
 const createSessionUser = (user) => omit(user.toJSON(), ["password", "__v"]);
 
 userRouter.get("/", async (req, res, next) => {
-  try {
-    if (!req.session?.user) {
-      return res.status(401).json({ message: "Must be logged in." });
-    }
-    res.json(req.session.user);
-  } catch (error) {
-    next(error);
-  }
+	try {
+		if (!req.session?.user) {
+			return res.status(401).json({ message: "Must be logged in." });
+		}
+		res.json(req.session.user);
+	} catch (error) {
+		next(error);
+	}
 });
 
 userRouter.post("/", async (req, res, next) => {
-  try {
-    const { username, email, password } = req.body;
+	try {
+		const { username, email, password } = req.body;
 
-    const user = new User({ username, email, password });
-    await user.save();
+		const user = new User({ username, email, password });
+		await user.save();
 
-    // avoid leaking password to client and initialize the session
-    req.session.user = createSessionUser(user);
-    res.json(req.session.user);
-  } catch (error) {
-    // check for duplicate error
-    const DUPLICATE_ENTRY_CODE = 11000;
-    if (error.code === DUPLICATE_ENTRY_CODE && error.keyPattern?.username) {
-      return res.status(400).json({ message: "Username already exists." });
-    }
-    if ((error.code = DUPLICATE_ENTRY_CODE && error.keyPattern?.email)) {
-      return res.status(400).json({ message: "E-mail already exists." });
-    }
-    next(error);
-  }
+		// avoid leaking password to client and initialize the session
+		req.session.user = createSessionUser(user);
+		res.json(req.session.user);
+	} catch (error) {
+		// check for duplicate error
+		const DUPLICATE_ENTRY_CODE = 11000;
+		if (error.code === DUPLICATE_ENTRY_CODE && error.keyPattern?.username) {
+			return res.status(400).json({ message: "Username already exists." });
+		}
+		if ((error.code = DUPLICATE_ENTRY_CODE && error.keyPattern?.email)) {
+			return res.status(400).json({ message: "E-mail already exists." });
+		}
+		next(error);
+	}
 });
 
 userRouter.post("/login", async (req, res, next) => {
-  try {
-    const { email, password } = req.body;
-    const user = await User.findOne({ email });
-    const isUserAuthentic = user && (await user.checkPassword(password));
-    if (isUserAuthentic) {
-      req.session.user = createSessionUser(user);
-      return res.json(req.session.user);
-    }
-    return res.status(401).json({ message: "Invalid credentials" });
-  } catch (error) {
-    next(error);
-  }
+	try {
+		const { email, password } = req.body;
+		const user = await User.findOne({ email });
+		const isUserAuthentic = user && (await user.checkPassword(password));
+		if (isUserAuthentic) {
+			req.session.user = createSessionUser(user);
+			return res.json(req.session.user);
+		}
+		return res.status(401).json({ message: "Invalid credentials" });
+	} catch (error) {
+		next(error);
+	}
 });
 
 userRouter.delete("/logout", async (req, res, next) => {
-  try {
-    if (!req.session.user) {
-      return res.status(422).json({ message: "Cannot comply" });
-    }
-    req.session.destroy((err) => {
-      if (err) return next(err);
-      res.end();
-    });
-  } catch (error) {
-    next(error);
-  }
+	try {
+		if (!req.session.user) {
+			return res.status(422).json({ message: "Cannot comply" });
+		}
+		req.session.destroy((err) => {
+			if (err) return next(err);
+			res.end();
+		});
+	} catch (error) {
+		next(error);
+	}
 });
+
+userRouter.put("/save", async (req, res, next) => {
+	try {
+		if (!req.session.user) {
+			return res.status(422).json({ message: "Must be Logged In" });
+		}
+		const save = await User.findByIdAndUpdate(req.body.id, {
+			project: req.body.project,
+		});
+		return res.json(save);
+	} catch (error) {
+		next(error);
+	}
+});
+
+/* Fetch Request example
+{
+	"id": "60aeb42251b8431923451dad",
+	"project": {
+		"title" : "Idea WhiteBoard",
+        "columns" : [ 
+            {
+                "words" : ["Hello", "World"],
+                "title" : "Zone 1"
+            }, 
+            {
+                "words" : ["Hello", "World"],
+                "title" : "Zone 2"
+            }, 
+            {
+                "words" : ["Hello", "World"],
+                "title" : "Zone 3"
+            }
+        ]}
+}
+*/
 
 module.exports = userRouter;
