@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { v4 as uuidv4 } from "uuid";
-<<<<<<< HEAD
 import randomWords from "random-words";
-=======
 import removeImg from '../../imgs/remove (2).png';
->>>>>>> 0b061cc0935de218d58a81b97ca9a03cff99f756
 
 const randomWordsList = randomWords(5);
 console.log(randomWordsList);
@@ -26,7 +23,7 @@ function GenerateWords() {
   const [chosenwords, setChosenWords] = useState("");
   const [newRandomWords, setNewRandom] = useState([{}]);
   // make array of new words
-  wRandomWords = randomWords(5);
+  newRandomWords = randomWords(5);
   const itemsFromBackend = [
     { id: uuidv4(), content: randomWordsList[0] },
     { id: uuidv4(), content: randomWordsList[1] },
