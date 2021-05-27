@@ -34,10 +34,6 @@ const columnsFromBackend = {
     name: "USER COLUMN 1",
     items: [],
   },
-  [uuidv4()]: {
-    name: "USER COLUMN 2",
-    items: [],
-  },
 };
 
 const onDragEnd = (result, columns, setColumns) => {
