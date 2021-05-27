@@ -10,9 +10,27 @@ mongoose.connect("mongodb://localhost/ideaLoader", {
 
 const UserSeeds = [
 	{
-		username: "TestBot",
-		email: "testbot@email.com",
-		password: "password",
+		username: "Test Bot",
+		email: "testbot@gmail.com",
+		password: "$2b$10$EHMCusOc0e2Am3RUf1KxIugHnYykMvEmFaYqKJBCoKv4LdytawAOq",
+		__v: 0,
+		project: {
+			title: "Idea Board",
+			columns: [
+				{
+					words: [],
+					title: "ColumnOne",
+				},
+				{
+					words: [],
+					title: "ColumnTwo",
+				},
+				{
+					words: [],
+					title: "ColumnThree",
+				},
+			],
+		},
 	},
 ];
 
