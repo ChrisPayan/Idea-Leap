@@ -3,14 +3,27 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { v4 as uuidv4 } from "uuid";
 import randomWords from "random-words";
 
-const itemsFromBackend = randomWords(5);
-// [
-//   { id: uuidv4(), content: "Random" },
-//   { id: uuidv4(), content: "Words" },
-//   { id: uuidv4(), content: "Taco" },
-//   { id: uuidv4(), content: "Water" },
-//   { id: uuidv4(), content: "Yeet" },
-// ];
+const randomWordsList = randomWords(5);
+console.log(randomWordsList);
+const itemsFromBackend = [
+  { id: uuidv4(), content: randomWordsList[0] },
+  { id: uuidv4(), content: randomWordsList[2] },
+  { id: uuidv4(), content: randomWordsList[1] },
+  { id: uuidv4(), content: randomWordsList[4] },
+  { id: uuidv4(), content: randomWordsList[3] },
+  // { id: uuidv4(), content: "Words" },
+  // { id: uuidv4(), content: "Taco" },
+  // { id: uuidv4(), content: "Water" },
+  // { id: uuidv4(), content: "Yeet" },
+];
+
+function generateWords() {
+  // make array of new words
+  const randomWordsList = randomWords(5);
+  console.log(randomWordsList);
+
+
+};
 
 const columnsFromBackend = {
   [uuidv4()]: {
@@ -68,9 +81,9 @@ function ReactBeautifulDND() {
   const [columns, setColumns] = useState(columnsFromBackend);
   return (
     <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
-    <div>
-      <p>Hey</p>
-    </div>
+      <div>
+        <p>{randomWordsList.join(", ")}</p>
+      </div>
       <DragDropContext
         onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
       >
