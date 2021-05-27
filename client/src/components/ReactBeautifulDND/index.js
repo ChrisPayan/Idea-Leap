@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { v4 as uuidv4 } from "uuid";
+import removeImg from '../../imgs/remove (2).png';
 
 const itemsFromBackend = [
   { id: uuidv4(), content: "Random" },
@@ -16,7 +17,7 @@ const columnsFromBackend = {
     items: itemsFromBackend,
   },
   [uuidv4()]: {
-    name: "USER COLUMN 1",
+    name: "My Idea Map",
     items: [],
   },
 };
@@ -87,6 +88,7 @@ function ReactBeautifulDND() {
                           background: snapshot.isDraggingOver
                             ? "lightblue"
                             : "lightgrey",
+                            borderRadius: "12px",
                           padding: 4,
                           width: 250,
                           minHeight: 500,
@@ -114,10 +116,25 @@ function ReactBeautifulDND() {
                                         ? "#263B4A"
                                         : "#456C86",
                                       color: "white",
+                                      borderRadius: "12px",
                                       ...provided.draggableProps.style,
+                                      display: "flex",
+                                      justifyContent: "space-around",
                                     }}
                                   >
                                     {item.content}
+                                    <button
+                              type="button"
+                              // onClick={() => {
+                              //   const newState = [...state];
+                              //   newState[ind].splice(index, 1);
+                              //   setState(
+                              //     newState.filter(group => group.length)
+                              //   );
+                              // }}
+                            >
+                              <img src={removeImg} alt='remove'></img>
+                            </button>
                                   </div>
                                 );
                               }}

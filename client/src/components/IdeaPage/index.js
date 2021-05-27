@@ -1,15 +1,22 @@
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../util/auth";
-import { Directions } from "../Directions/Directions";
 import ReactBeautifulDND from "../ReactBeautifulDND";
+import IdeaPageHeader from "../IdeaPageHeader";
+import ResetButton from "../ResetButton";
+import IdeaPageTips from "../IdeaPageTips";
+
+
 function IdeaPage() {
   const history = useHistory();
   const auth = useAuth();
 
   return (
     <>
-      <Directions />
+    <div className="items-center">
+      <IdeaPageHeader />
       <ReactBeautifulDND />
+      <ResetButton />
+      <IdeaPageTips />
 
       {/* hide actions if user is logged in */}
       {!auth.isLoggedIn() && (
@@ -18,6 +25,7 @@ function IdeaPage() {
           <button onClick={() => history.push("/signup")}></button>
         </>
       )}
+      </div>
     </>
   );
 }
