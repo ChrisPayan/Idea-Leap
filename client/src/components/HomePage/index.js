@@ -9,8 +9,8 @@ function HomePage() {
 
   return (
     <>
-      <Hero />
-      <Header />
+    <Hero />
+
       <Directions />
       {/* hide actions if user is logged in */}
       {!auth.isLoggedIn() && (
