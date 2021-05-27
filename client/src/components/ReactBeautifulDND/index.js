@@ -5,25 +5,34 @@ import randomWords from "random-words";
 
 const randomWordsList = randomWords(5);
 console.log(randomWordsList);
-const itemsFromBackend = [
-  { id: uuidv4(), content: randomWordsList[0] },
-  { id: uuidv4(), content: randomWordsList[2] },
-  { id: uuidv4(), content: randomWordsList[1] },
-  { id: uuidv4(), content: randomWordsList[4] },
-  { id: uuidv4(), content: randomWordsList[3] },
-  // { id: uuidv4(), content: "Words" },
-  // { id: uuidv4(), content: "Taco" },
-  // { id: uuidv4(), content: "Water" },
-  // { id: uuidv4(), content: "Yeet" },
-];
+// { id: uuidv4(), content: "Words" },
+// { id: uuidv4(), content: "Taco" },
+// { id: uuidv4(), content: "Water" },
+// { id: uuidv4(), content: "Yeet" },
 
-function generateWords() {
+// click btn to open modal
+// give words
+// user can choose words, or roll new words
+// state for two arrays
+// chosenwords array, newoptions array
+// chosenwords added to column on selection
+//
+let itemsFromBackend = [""];
+function GenerateWords() {
+  const [chosenwords, setChosenWords] = useState("");
+  const [newRandomWords, setNewRandom] = useState([{}]);
   // make array of new words
-  const randomWordsList = randomWords(5);
+  wRandomWords = randomWords(5);
+  const itemsFromBackend = [
+    { id: uuidv4(), content: randomWordsList[0] },
+    { id: uuidv4(), content: randomWordsList[1] },
+    { id: uuidv4(), content: randomWordsList[2] },
+    { id: uuidv4(), content: randomWordsList[3] },
+    { id: uuidv4(), content: randomWordsList[4] },
+  ];
   console.log(randomWordsList);
-
-
-};
+  return itemsFromBackend;
+}
 
 const columnsFromBackend = {
   [uuidv4()]: {
@@ -78,6 +87,9 @@ function ReactBeautifulDND() {
   return (
     <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
       <div>
+        <button className="bg-purple-300" onclick={GenerateWords}>
+          Generate!
+        </button>
         <p>{randomWordsList.join(", ")}</p>
       </div>
       <DragDropContext
