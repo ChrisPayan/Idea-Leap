@@ -52,6 +52,8 @@ function Navbar1() {
                 Login
               </a>
             </li>
+          </ul>
+          <ul>
             <li>
               <a
                 href="/ideas"
