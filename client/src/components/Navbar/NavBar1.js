@@ -1,7 +1,16 @@
 import React, { useState } from "react";
+import { useAuth } from "../../util/auth";
 
 function Navbar1() {
+	const auth = useAuth();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+	const handleLogout = async (evt) => {
+		evt.preventDefault();
+		console.log("Logging out");
+		return auth.logout();
+	};
+
 	return (
 		<div className="bg-gray-900">
 			<div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
@@ -13,7 +22,7 @@ function Navbar1() {
 						className="inline-flex items-center"
 					>
 						<svg
-							className="w-8 text-teal-accent-400"
+							className="w-8 text-white"
 							viewBox="0 0 24 24"
 							strokeLinejoin="round"
 							strokeWidth="2"
@@ -32,36 +41,51 @@ function Navbar1() {
 						</span>
 					</a>
 					<ul className="flex items-center hidden space-x-8 lg:flex">
-						<li>
-							<a
-								href="/signup"
-								aria-label="About us"
-								title="About us"
-								className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-							>
-								Sign Up
-							</a>
-						</li>
-						<li>
-							<a
-								href="/login"
-								className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-								aria-label="Sign up"
-								title="Sign up"
-							>
-								Login
-							</a>
-						</li>
-						<li>
-							<a
-								href="/ideas"
-								className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-								aria-label="Sign up"
-								title="Sign up"
-							>
-								Ideas
-							</a>
-						</li>
+						{auth.isLoggedIn() ? (
+							<>
+								<li>
+									<a
+										href="/ideas"
+										className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+										aria-label="Sign up"
+										title="Sign up"
+									>
+										Ideas
+									</a>
+								</li>
+								<li>
+									<button
+										onClick={handleLogout}
+										className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+									>
+										Logout
+									</button>
+								</li>
+							</>
+						) : (
+							<>
+								<li>
+									<a
+										href="/signup"
+										aria-label="About us"
+										title="About us"
+										className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+									>
+										Sign Up
+									</a>
+								</li>
+								<li>
+									<a
+										href="/login"
+										className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+										aria-label="Sign up"
+										title="Sign up"
+									>
+										Login
+									</a>
+								</li>
+							</>
+						)}
 					</ul>
 					<div className="lg:hidden">
 						<button
