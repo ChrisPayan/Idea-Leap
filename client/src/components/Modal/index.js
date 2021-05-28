@@ -18,6 +18,34 @@ export default function Modal() {
     { id: uuidv4(), content: randomWordsList[4] },
   ];
 
+  // ====== selectRandomWord onclick handler===========
+  // click desired word
+  // assign id, add to column
+  // update chosenwords state
+
+  //  =======================
+  //	FUNCTION TO HANDLE CLICK EVENT ON SHUFFLE BUTTON
+  // 	=======================
+  // const generateWords = (e) => {
+  // e.preventDefault();
+  // let newRandomWord = randomWords(1);
+  // setChosenWords(...itemsFromGenerator, newRandomWord);
+  // return console.log(newRandomWord);
+
+  // const [newRandomWords, setNewRandom] = useState([{}]);
+  // // make array of new words
+  // newRandomWords = randomWords(5);
+  // const itemsFromGenerator = [
+  //   { id: uuidv4(), content: randomWordsList[0] },
+  //   { id: uuidv4(), content: randomWordsList[1] },
+  //   { id: uuidv4(), content: randomWordsList[2] },
+  //   { id: uuidv4(), content: randomWordsList[3] },
+  //   { id: uuidv4(), content: randomWordsList[4] },
+  // ];
+  // console.log(randomWordsList);
+  // return itemsFromGenerator;
+  // };
+
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -66,13 +94,13 @@ export default function Modal() {
                       className="text-lg leading-6 font-medium text-gray-900"
                     >
                       Select Random Words
+                      <p>{randomWordsList.join(", ")}</p>
                     </Dialog.Title>
                     <div className="mt-2 flex flex-row"></div>
                   </div>
                 </div>
               </div>
               <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <p>{randomWordsList.join(", ")}</p>
                 <button
                   type="button"
                   className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-gray-900 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"

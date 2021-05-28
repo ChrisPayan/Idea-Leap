@@ -13,10 +13,6 @@ const itemsFromGenerator = [
   { id: uuidv4(), content: randomWordsList[3] },
   { id: uuidv4(), content: randomWordsList[4] },
 ];
-// { id: uuidv4(), content: "Words" },
-// { id: uuidv4(), content: "Taco" },
-// { id: uuidv4(), content: "Water" },
-// { id: uuidv4(), content: "Yeet" },
 
 // click btn to open modal
 // give words
@@ -24,31 +20,6 @@ const itemsFromGenerator = [
 // state for two arrays
 // chosenwords array, newoptions array
 // chosenwords added to column on selection
-
-// ======onclick handler===========
-// click desired word
-// assign id, add to column
-// update chosenwords state
-
-const generateWords = (e) => {
-  e.preventDefault();
-  let newRandomWord = randomWords(1);
-  // setChosenWords(...itemsFromGenerator, newRandomWord);
-  return console.log(newRandomWord);
-
-  // const [newRandomWords, setNewRandom] = useState([{}]);
-  // // make array of new words
-  // newRandomWords = randomWords(5);
-  // const itemsFromGenerator = [
-  //   { id: uuidv4(), content: randomWordsList[0] },
-  //   { id: uuidv4(), content: randomWordsList[1] },
-  //   { id: uuidv4(), content: randomWordsList[2] },
-  //   { id: uuidv4(), content: randomWordsList[3] },
-  //   { id: uuidv4(), content: randomWordsList[4] },
-  // ];
-  // console.log(randomWordsList);
-  // return itemsFromGenerator;
-}
 
 const columnsFromBackend = {
   [uuidv4()]: {
@@ -103,12 +74,6 @@ function ReactBeautifulDND() {
   const [chosenWords, setChosenWords] = useState(itemsFromGenerator);
   return (
     <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
-      <div>
-        <button className="bg-purple-300" onClick={generateWords}>
-          Generate!
-        </button>
-        <p>{randomWordsList.join(", ")}</p>
-      </div>
       <DragDropContext
         onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
       >
