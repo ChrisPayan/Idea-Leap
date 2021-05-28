@@ -2,10 +2,17 @@ import React, { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { v4 as uuidv4 } from "uuid";
 import randomWords from "random-words";
-import removeImg from '../../imgs/remove (2).png';
+import removeImg from "../../imgs/remove (2).png";
 
 const randomWordsList = randomWords(5);
 console.log(randomWordsList);
+const itemsFromGenerator = [
+  { id: uuidv4(), content: randomWordsList[0] },
+  { id: uuidv4(), content: randomWordsList[1] },
+  { id: uuidv4(), content: randomWordsList[2] },
+  { id: uuidv4(), content: randomWordsList[3] },
+  { id: uuidv4(), content: randomWordsList[4] },
+];
 // { id: uuidv4(), content: "Words" },
 // { id: uuidv4(), content: "Taco" },
 // { id: uuidv4(), content: "Water" },
@@ -17,28 +24,36 @@ console.log(randomWordsList);
 // state for two arrays
 // chosenwords array, newoptions array
 // chosenwords added to column on selection
-//
-let itemsFromBackend = [""];
-function GenerateWords() {
-  const [chosenwords, setChosenWords] = useState("");
-  const [newRandomWords, setNewRandom] = useState([{}]);
-  // make array of new words
-  newRandomWords = randomWords(5);
-  const itemsFromBackend = [
-    { id: uuidv4(), content: randomWordsList[0] },
-    { id: uuidv4(), content: randomWordsList[1] },
-    { id: uuidv4(), content: randomWordsList[2] },
-    { id: uuidv4(), content: randomWordsList[3] },
-    { id: uuidv4(), content: randomWordsList[4] },
-  ];
-  console.log(randomWordsList);
-  return itemsFromBackend;
+
+// ======onclick handler===========
+// click desired word
+// assign id, add to column
+// update chosenwords state
+
+const generateWords = (e) => {
+  e.preventDefault();
+  let newRandomWord = randomWords(1);
+  // setChosenWords(...itemsFromGenerator, newRandomWord);
+  return console.log(newRandomWord);
+
+  // const [newRandomWords, setNewRandom] = useState([{}]);
+  // // make array of new words
+  // newRandomWords = randomWords(5);
+  // const itemsFromGenerator = [
+  //   { id: uuidv4(), content: randomWordsList[0] },
+  //   { id: uuidv4(), content: randomWordsList[1] },
+  //   { id: uuidv4(), content: randomWordsList[2] },
+  //   { id: uuidv4(), content: randomWordsList[3] },
+  //   { id: uuidv4(), content: randomWordsList[4] },
+  // ];
+  // console.log(randomWordsList);
+  // return itemsFromGenerator;
 }
 
 const columnsFromBackend = {
   [uuidv4()]: {
     name: "My Words",
-    items: itemsFromBackend,
+    items: itemsFromGenerator,
   },
   [uuidv4()]: {
     name: "My Idea Map",
@@ -85,10 +100,11 @@ const onDragEnd = (result, columns, setColumns) => {
 
 function ReactBeautifulDND() {
   const [columns, setColumns] = useState(columnsFromBackend);
+  const [chosenWords, setChosenWords] = useState(itemsFromGenerator);
   return (
     <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
       <div>
-        <button className="bg-purple-300" onclick={GenerateWords}>
+        <button className="bg-purple-300" onClick={generateWords}>
           Generate!
         </button>
         <p>{randomWordsList.join(", ")}</p>
@@ -118,7 +134,7 @@ function ReactBeautifulDND() {
                           background: snapshot.isDraggingOver
                             ? "lightblue"
                             : "lightgrey",
-                            borderRadius: "12px",
+                          borderRadius: "12px",
                           padding: 4,
                           width: 250,
                           minHeight: 500,
@@ -154,17 +170,17 @@ function ReactBeautifulDND() {
                                   >
                                     {item.content}
                                     <button
-                              type="button"
-                              // onClick={() => {
-                              //   const newState = [...state];
-                              //   newState[ind].splice(index, 1);
-                              //   setState(
-                              //     newState.filter(group => group.length)
-                              //   );
-                              // }}
-                            >
-                              <img src={removeImg} alt='remove'></img>
-                            </button>
+                                      type="button"
+                                      // onClick={() => {
+                                      //   const newState = [...state];
+                                      //   newState[ind].splice(index, 1);
+                                      //   setState(
+                                      //     newState.filter(group => group.length)
+                                      //   );
+                                      // }}
+                                    >
+                                      <img src={removeImg} alt="remove"></img>
+                                    </button>
                                   </div>
                                 );
                               }}
