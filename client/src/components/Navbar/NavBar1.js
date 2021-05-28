@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ideaLoaderIcon from '../../imgs/idea-loader-icon.png';
 
 function Navbar1() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,7 +13,10 @@ function Navbar1() {
             title="Company"
             className="inline-flex items-center"
           >
-            <svg
+            <div>
+            <img src={ideaLoaderIcon} alt="ideaLoaderIcon" className="transform scale-75"></img>
+            </div>
+            {/* <svg
               className="w-8 text-teal-accent-400"
               viewBox="0 0 24 24"
               strokeLinejoin="round"
@@ -26,7 +30,7 @@ function Navbar1() {
               <rect x="3" y="17" width="7" height="6" />
               <rect x="14" y="1" width="7" height="6" />
               <rect x="14" y="11" width="7" height="12" />
-            </svg>
+            </svg> */}
             <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
               IdeaLoader
             </span>
