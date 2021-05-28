@@ -11,13 +11,13 @@ import IdeaPage from "./components/IdeaPage";
 
 function App() {
 	return (
-		<AuthProvider>
-			<Router>
-				<Navbar1 />
-				<Switch>
-					<Route exact path="/">
-						<HomePage />
-					</Route>
+		<Router>
+			<Navbar1 />
+			<Switch>
+				<Route exact path="/">
+					<HomePage />
+				</Route>
+				<AuthProvider>
 					<Route path="/login">
 						<LoginPage />
 					</Route>
@@ -30,10 +30,10 @@ function App() {
 					<Route path="/signup">
 						<SignupPage />
 					</Route>
-				</Switch>
-				<Footer />
-			</Router>
-		</AuthProvider>
+				</AuthProvider>
+			</Switch>
+			<Footer />
+		</Router>
 	);
 }
 
