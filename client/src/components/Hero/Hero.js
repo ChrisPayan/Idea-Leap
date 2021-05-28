@@ -24,7 +24,7 @@ export const Hero = () => {
           {/* <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
             Idealoader
           </p> */}
-          <h2 className="mb-5 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+          <h2 className="pt-8 mb-5 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
             Imagine 
             <br className="hidden md:block" />
             the possiblities{' '}
