@@ -1,19 +1,19 @@
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import randomWords from "random-words";
 
 export default function Modal({ show, onClick }) {
   const cancelButtonRef = useRef(null);
 
   const [randomOptions, setRandom] = useState(randomWords(5));
-  const itemsFromGenerator = [
-    { id: uuidv4(), content: randomOptions[0] },
-    { id: uuidv4(), content: randomOptions[1] },
-    { id: uuidv4(), content: randomOptions[2] },
-    { id: uuidv4(), content: randomOptions[3] },
-    { id: uuidv4(), content: randomOptions[4] },
-  ];
+  // const itemsFromGenerator = [
+  //   { id: uuidv4(), content: randomOptions[0] },
+  //   { id: uuidv4(), content: randomOptions[1] },
+  //   { id: uuidv4(), content: randomOptions[2] },
+  //   { id: uuidv4(), content: randomOptions[3] },
+  //   { id: uuidv4(), content: randomOptions[4] },
+  // ];
 
   // ====== selectRandomWord onclick handler===========
   // click desired word
@@ -74,15 +74,24 @@ export default function Modal({ show, onClick }) {
           >
             <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <div className="sm:flex sm:items-start">
+                <div className="sm:flex sm:content-center sm:justify-center">
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                     <Dialog.Title
                       as="h3"
-                      className="text-lg leading-6 font-medium text-gray-900"
+                      className="mb-3 text-xl leading-6 font-medium text-gray-900"
                     >
-                      Select Random Words
-                      <p>{randomOptions.join(", ")}</p>
+                      Select Your Words:
                     </Dialog.Title>
+                    {randomOptions.map((word, index) => (
+                      <button
+                        key={index}
+                        type="button"
+												onClick={() => {alert("Assign UUID and Add word to column")}}
+                        className="my-2 w-full block rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-100 sm:text-sm"
+                      >
+                        {word}
+                      </button>
+                    ))}
                     <div className="mt-2 flex flex-row"></div>
                   </div>
                 </div>
