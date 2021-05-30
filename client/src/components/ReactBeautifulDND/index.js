@@ -17,9 +17,14 @@ const itemsFromGenerator = [
 // click btn to open modal
 // give words
 // user can choose words, or roll new words
-// state for two arrays
-// chosenwords array, newoptions array
-// chosenwords added to column on selection
+
+// Lift state for words in column
+// Use chosenWords array as state
+// set user's saved ChosenWords as initial state
+// Update state when selecting words from modal
+  // helper function to assign uuidv4 to chosen word
+    //  .push? chosenWord into chosenWords column
+
 
 const columnsFromBackend = {
   [uuidv4()]: {
@@ -71,7 +76,6 @@ const onDragEnd = (result, columns, setColumns) => {
 
 function ReactBeautifulDND() {
   const [columns, setColumns] = useState(columnsFromBackend);
-  const [chosenWords, setChosenWords] = useState(itemsFromGenerator);
   return (
     <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
       <DragDropContext
