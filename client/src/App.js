@@ -8,33 +8,37 @@ import PrivateRoute from "./components/PrivateRoute";
 import Navbar1 from "./components/Navbar/NavBar1";
 import { Footer } from "./components/Footer/Footer";
 import IdeaPage from "./components/IdeaPage";
+import Settings from "./components/Settings";
 
 function App() {
-	return (
-		<AuthProvider>
-			<Router>
-				<Navbar1 />
-				<Switch>
-					<Route exact path="/">
-						<HomePage />
-					</Route>
-					<Route path="/login">
-						<LoginPage />
-					</Route>
-					<Route path="/ideas">
-						<IdeaPage />
-					</Route>
-					<PrivateRoute path="/private">
-						<PrivatePage />
-					</PrivateRoute>
-					<Route path="/signup">
-						<SignupPage />
-					</Route>
-				</Switch>
-				<Footer />
-			</Router>
-		</AuthProvider>
-	);
+  return (
+    <AuthProvider>
+      <Router>
+        <Navbar1 />
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          <Route path="/ideas">
+            <IdeaPage />
+          </Route>
+          <Route path="/settings">
+            <Settings />
+          </Route>
+          <PrivateRoute path="/private">
+            <PrivatePage />
+          </PrivateRoute>
+          <Route path="/signup">
+            <SignupPage />
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
+    </AuthProvider>
+  );
 }
 
 export default App;
