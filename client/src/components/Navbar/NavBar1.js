@@ -14,7 +14,7 @@ function Navbar1() {
             className="inline-flex items-center"
           >
             <div>
-            <img src={ideaLoaderIcon} alt="ideaLoaderIcon" className="transform scale-75"></img>
+              <img src={ideaLoaderIcon} alt="ideaLoaderIcon" className="transform scale-75 z-0"></img>
             </div>
             <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
               IdeaLoader
@@ -34,7 +34,7 @@ function Navbar1() {
             <li>
               <a
                 href="/login"
-                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-800 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                 aria-label="Sign up"
                 title="Sign up"
               >
@@ -52,7 +52,7 @@ function Navbar1() {
               </a>
             </li>
           </ul>
-          <div className="lg:hidden">
+          <div className="lg:hidden z-10">
             <button
               aria-label="Open Menu"
               title="Open Menu"
@@ -85,7 +85,7 @@ function Navbar1() {
                         title="Company"
                         className="inline-flex items-center"
                       >
-                        <svg
+                        {/* <svg
                           className="w-8 text-deep-purple-accent-400"
                           viewBox="0 0 24 24"
                           strokeLinejoin="round"
@@ -99,9 +99,12 @@ function Navbar1() {
                           <rect x="3" y="17" width="7" height="6" />
                           <rect x="14" y="1" width="7" height="6" />
                           <rect x="14" y="11" width="7" height="12" />
-                        </svg>
+                        </svg> */}
+                        <div>
+              <img src={ideaLoaderIcon} alt="ideaLoaderIcon" className="transform scale-75 z-0"></img>
+            </div>
                         <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                          Company
+                          IdeaLoader
                         </span>
                       </a>
                     </div>
@@ -122,7 +125,7 @@ function Navbar1() {
                     </div>
                   </div>
                   <nav>
-                    <ul className="space-y-4">
+                    <ul className="space-y-4 z-1">
                       <li>
                         <a
                           href="/"
@@ -161,16 +164,6 @@ function Navbar1() {
                           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                         >
                           About us
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/"
-                          className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                          aria-label="Sign up"
-                          title="Sign up"
-                        >
-                          Sign up
                         </a>
                       </li>
                     </ul>
