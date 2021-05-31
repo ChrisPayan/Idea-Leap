@@ -37,14 +37,24 @@ function Navbar1() {
 					</a>
 					<ul className="flex items-center hidden space-x-8 lg:flex">
 						{auth.isLoggedIn() ? (
-							<li>
-								<button
-									onClick={handleLogout}
-									className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-								>
-									Logout
-								</button>
-							</li>
+							<div className="flex items-center justify-between">
+								<div className="mx-3">
+									<a
+										href="/ideas"
+										className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+									>
+										Ideas
+									</a>
+								</div>
+								<div className="mx-3">
+									<button
+										onClick={handleLogout}
+										className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+									>
+										Logout
+									</button>
+								</div>
+							</div>
 						) : (
 							<>
 								<li>
@@ -124,13 +134,23 @@ function Navbar1() {
 											</a>
 										</div>
 										{auth.isLoggedIn() ? (
-											<div>
-												<button
-													onClick={handleLogout}
-													className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-												>
-													Logout
-												</button>
+											<div className="flex items-center justify-between">
+												<div className="mx-3">
+													<a
+														href="/ideas"
+														className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+													>
+														Ideas
+													</a>
+												</div>
+												<div className="mx-3">
+													<button
+														onClick={handleLogout}
+														className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+													>
+														Logout
+													</button>
+												</div>
 											</div>
 										) : (
 											<>
