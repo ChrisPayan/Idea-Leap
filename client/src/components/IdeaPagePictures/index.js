@@ -1,5 +1,5 @@
 
-const IdeaPageTips = ({ title, children }) => {
+const IdeaPagePictures = ({ title, children }) => {
 
   
     return (
@@ -20,22 +20,22 @@ const IdeaPageTips = ({ title, children }) => {
       <div className="grid max-w-screen-lg gap-8 row-gap-5 mb-8 sm:grid-cols-2 lg:grid-cols-4 sm:mx-auto">
         <img
           className="object-cover w-full h-56 rounded shadow-lg"
-          src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+          src="https://picsum.photos/1260/750"
           alt=""
         />
         <img
           className="object-cover w-full h-56 rounded shadow-lg"
-          src="https://images.pexels.com/photos/3182746/pexels-photo-3182746.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+          src="https://picsum.photos/1261/750"
           alt=""
         />
         <img
           className="object-cover w-full h-56 rounded shadow-lg"
-          src="https://images.pexels.com/photos/3184311/pexels-photo-3184311.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;w=500"
+          src="https://picsum.photos/1262/750"
           alt=""
         />
         <img
           className="object-cover w-full h-56 rounded shadow-lg"
-          src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+          src="https://picsum.photos/1263/750"
           alt=""
         />
       </div>
@@ -51,7 +51,7 @@ const IdeaPageTips = ({ title, children }) => {
     );
   };
 
-  export default IdeaPageTips;
+  export default IdeaPagePictures;
 
 
   

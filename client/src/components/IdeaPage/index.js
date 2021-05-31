@@ -4,7 +4,7 @@ import ReactBeautifulDND from "../ReactBeautifulDND";
 import Modal from "../Modal";
 import IdeaPageHeader from "../IdeaPageHeader";
 import ResetButton from "../ResetButton";
-import IdeaPageTips from "../IdeaPageTips";
+import IdeaPagePictures from "../IdeaPagePictures";
 
 function IdeaPage() {
 	const history = useHistory();
@@ -16,7 +16,7 @@ function IdeaPage() {
 				<IdeaPageHeader />
 				<ReactBeautifulDND />
 				<ResetButton />
-				<IdeaPageTips />
+				<IdeaPagePictures />
 				<Modal />
 
 				{/* hide actions if user is logged in */}
