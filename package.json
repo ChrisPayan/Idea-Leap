@@ -35,6 +35,7 @@
     "if-env": "^1.0.4",
     "lodash": "^4.17.21",
     "mongoose": "^5.12.10",
+    "random-words": "^1.1.1",
     "react-beautiful-dnd": "^13.1.0"
   }
 }
