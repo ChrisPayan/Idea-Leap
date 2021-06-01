@@ -1,20 +1,35 @@
 import React, { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { v4 as uuidv4 } from "uuid";
-import removeImg from '../../imgs/remove (2).png';
+import randomWords from "random-words";
+import removeImg from "../../imgs/remove (2).png";
 
-const itemsFromBackend = [
-  { id: uuidv4(), content: "Random" },
-  { id: uuidv4(), content: "Words" },
-  { id: uuidv4(), content: "Taco" },
-  { id: uuidv4(), content: "Water" },
-  { id: uuidv4(), content: "Yeet" },
+const randomWordsList = randomWords(5);
+console.log(randomWordsList);
+const itemsFromGenerator = [
+  { id: uuidv4(), content: randomWordsList[0] },
+  { id: uuidv4(), content: randomWordsList[1] },
+  { id: uuidv4(), content: randomWordsList[2] },
+  { id: uuidv4(), content: randomWordsList[3] },
+  { id: uuidv4(), content: randomWordsList[4] },
 ];
+
+// click btn to open modal
+// give words
+// user can choose words, or roll new words
+
+// Lift state for words in column
+// Use chosenWords array as state
+// set user's saved ChosenWords as initial state
+// Update state when selecting words from modal
+  // helper function to assign uuidv4 to chosen word
+    //  .push? chosenWord into chosenWords column
+
 
 const columnsFromBackend = {
   [uuidv4()]: {
     name: "My Words",
-    items: itemsFromBackend,
+    items: itemsFromGenerator,
   },
   [uuidv4()]: {
     name: "My Idea Map",
@@ -88,7 +103,7 @@ function ReactBeautifulDND() {
                           background: snapshot.isDraggingOver
                             ? "lightblue"
                             : "lightgrey",
-                            borderRadius: "12px",
+                          borderRadius: "12px",
                           padding: 4,
                           width: 250,
                           minHeight: 500,
@@ -124,17 +139,17 @@ function ReactBeautifulDND() {
                                   >
                                     {item.content}
                                     <button
-                              type="button"
-                              // onClick={() => {
-                              //   const newState = [...state];
-                              //   newState[ind].splice(index, 1);
-                              //   setState(
-                              //     newState.filter(group => group.length)
-                              //   );
-                              // }}
-                            >
-                              <img src={removeImg} alt='remove'></img>
-                            </button>
+                                      type="button"
+                                      // onClick={() => {
+                                      //   const newState = [...state];
+                                      //   newState[ind].splice(index, 1);
+                                      //   setState(
+                                      //     newState.filter(group => group.length)
+                                      //   );
+                                      // }}
+                                    >
+                                      <img src={removeImg} alt="remove"></img>
+                                    </button>
                                   </div>
                                 );
                               }}
