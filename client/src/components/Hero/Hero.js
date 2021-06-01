@@ -26,7 +26,7 @@ export const Hero = () => {
           </p> */}
           <h2 className="pt-8 mb-5 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
             Imagine <br className="hidden md:block" />
-            the possiblities{" "}
+            the possibilities{" "}
             <span className="inline-block text-deep-purple-accent-400"></span>
           </h2>
           <p className="pr-5 mb-5 text-base text-gray-700 md:text-lg">
