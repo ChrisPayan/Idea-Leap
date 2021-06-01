@@ -8,7 +8,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Navbar1 from "./components/Navbar/NavBar1";
 import { Footer } from "./components/Footer/Footer";
 import IdeaPage from "./components/IdeaPage";
-import Settings from "./components/Settings";
+import SettingsPage from "./components/Settings";
 
 function App() {
   return (
@@ -22,12 +22,12 @@ function App() {
           <Route path="/login">
             <LoginPage />
           </Route>
-          <Route path="/ideas">
+          <PrivateRoute path="/ideas">
             <IdeaPage />
-          </Route>
-          <Route path="/settings">
-            <Settings />
-          </Route>
+          </PrivateRoute>
+          <PrivateRoute path="/settings">
+            <SettingsPage />
+          </PrivateRoute>
           <PrivateRoute path="/private">
             <PrivatePage />
           </PrivateRoute>
