@@ -50,14 +50,13 @@ const UserSchema = new mongoose.Schema({
 			type: [columnConfig],
 			validate: {
 				validator: (v) => {
-					return v.length < 4;
+					return v.length < 3;
 				},
 				message: "Can not exceed maximum of 3 columns",
 			},
 			default: [
 				{ title: "ColumnOne", words: [] },
 				{ title: "ColumnTwo", words: [] },
-				{ title: "ColumnThree", words: [] },
 			],
 		},
 	},
