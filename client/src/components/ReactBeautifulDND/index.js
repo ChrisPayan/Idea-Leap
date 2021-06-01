@@ -49,7 +49,7 @@ function ReactBeautifulDND({ columnData }) {
 		},
 		[uuidv4()]: {
 			name: "My Idea Map",
-			items: [],
+			items: [{id: uuidv4(), content: "Idea explanation"}, {id: uuidv4(), content: "Be creative!"}],
 		},
 	};
 	const [columns, setColumns] = useState(columnsFromBackend);
